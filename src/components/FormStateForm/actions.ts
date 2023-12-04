@@ -1,12 +1,18 @@
 "use server";
 
+export type State = {
+  name: string;
+  password: string;
+};
+
 export async function serverAction(
-  state: { name: string },
+  state: State,
   formState: FormData
-): Promise<{ name: string }> {
-  const data = new Promise<{ name: string }>((resolve) =>
+): Promise<State> {
+  const data = new Promise<State>((resolve) =>
     resolve({
       name: formState.get("name") as string,
+      password: formState.get("password") as string,
     })
   );
 
